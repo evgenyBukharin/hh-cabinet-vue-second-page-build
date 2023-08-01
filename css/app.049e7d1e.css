@@ -205,6 +205,7 @@
 	position: relative;
 	border: 1px solid var(--green-color);
 	border-radius: 10px;
+	max-height: 50px;
 }
 .filters__container-buttons {
 	width: 100%;
@@ -217,7 +218,6 @@
 	display: none;
 	border: 0;
 	padding: 0;
-	max-width: 1140px;
 }
 .filters__container-main-active {
 	border: 1px solid var(--green-color);
@@ -264,6 +264,7 @@
 	cursor: pointer;
 	transition: border-radius 0.3s ease;
 	outline: none;
+	max-height: inherit;
 }
 .filters__input-select-active {
 	border-radius: 5px;
@@ -329,6 +330,8 @@
 	border: 1px solid var(--light-green-color);
 	background: var(--white-color);
 	padding: 10px;
+	padding-bottom: 16px;
+	padding-right: 16px;
 	width: 100%;
 	min-width: 280px;
 }
@@ -431,6 +434,12 @@
 .simplebar-track.simplebar-vertical {
 	width: 2px;
 	background: #d9d9d9;
+	right: -9px;
+}
+.simplebar-track.simplebar-horizontal {
+	height: 2px;
+	background: #d9d9d9;
+	bottom: -10px;
 }
 .simplebar-scrollbar {
 	width: 2px;
@@ -1139,8 +1148,7 @@ button.swiper-pagination-bullet {
 	color: var(--blue-color);
 }
 .hero {
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 15px;
 	min-height: 700px;
 }
 .hero__container-button {
@@ -1155,10 +1163,12 @@ button.swiper-pagination-bullet {
 	width: 25px;
 	cursor: pointer;
 	overflow: hidden;
-	transition: width 0.2s linear;
+	transition: width 0.2s linear, opacity 0.2s ease;
 	border: 1px solid var(--green-color);
 	border-radius: 5px;
 	height: 25px;
+	padding: 0;
+	background: var(--white-color);
 }
 .hero__container-button-active {
 	width: 100px;
@@ -1173,6 +1183,10 @@ button.swiper-pagination-bullet {
 	width: 75px;
 	transition: opacity 0.2s linear 0.2s;
 	opacity: 0;
+}
+.hero__container-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 .hero__container-icon {
 	height: 100%;
@@ -1376,7 +1390,7 @@ button.swiper-pagination-bullet {
 	white-space: nowrap;
 }
 .hero__slider-pagination {
-	max-width: 82px;
+	max-width: 184px;
 }
 .hero__text-pages {
 	position: relative;
@@ -1449,6 +1463,9 @@ button.swiper-pagination-bullet {
 	height: 100% !important;
 	line-height: 18px;
 	transition: color 0.3s linear;
+	text-align: center;
+	margin-right: 20px !important;
+	min-width: 20.8px;
 }
 .hero__bullet:last-child {
 	margin-right: 0 !important;
@@ -1467,7 +1484,7 @@ button.swiper-pagination-bullet {
 	font-weight: 700;
 }
 .hero__bullet:after {
-	right: -13px;
+	right: -50%;
 }
 .hero__bullet-active {
 	color: var(--blue-color);
@@ -1495,6 +1512,72 @@ button.swiper-pagination-bullet {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+.loader {
+	z-index: 970;
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.4s ease, visibility 0.4s ease;
+	border-radius: 10px;
+}
+.loader-hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+.loader__container {
+	margin-top: 10%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.loader__image {
+	width: 120px;
+	height: 120px;
+	animation: spinning-gear 2s ease infinite;
+	transition: fill 0.4s ease 0.1s;
+}
+.loader__image-red {
+	fill: red;
+}
+.loader__title {
+	text-align: center;
+	color: var(--white-color);
+	font-size: 24px;
+	line-height: 120%;
+	margin: 0;
+	margin-top: 18px;
+	max-width: 740px;
+	transition: color 0.4s ease, text-shadow 0.4s;
+	text-shadow: 0 -2px 2px transparent, 0 -2px 2px transparent, 0 2px 2px transparent, 0 2px 2px transparent,
+		-2px 0 2px transparent, 2px 0 2px transparent, -2px 0 2px transparent, 2px 0 2px transparent,
+		-1px -2px 2px transparent, 1px -2px 2px transparent, -1px 2px 2px transparent, 1px 2px 2px transparent,
+		-2px -1px 2px transparent, 2px -1px 2px transparent, -2px 1px 2px transparent, 2px 1px 2px transparent,
+		-2px -2px 2px transparent, 2px -2px 2px transparent, -2px 2px 2px transparent, 2px 2px 2px transparent,
+		-2px -2px 2px transparent, 2px -2px 2px transparent, -2px 2px 2px transparent, 2px 2px 2px transparent;
+}
+.loader__title-red {
+	color: red;
+	text-shadow: 0 -2px 2px #fff, 0 -2px 2px #fff, 0 2px 2px #fff, 0 2px 2px #fff, -2px 0 2px #fff, 2px 0 2px #fff,
+		-2px 0 2px #fff, 2px 0 2px #fff, -1px -2px 2px #fff, 1px -2px 2px #fff, -1px 2px 2px #fff, 1px 2px 2px #fff,
+		-2px -1px 2px #fff, 2px -1px 2px #fff, -2px 1px 2px #fff, 2px 1px 2px #fff, -2px -2px 2px #fff,
+		2px -2px 2px #fff, -2px 2px 2px #fff, 2px 2px 2px #fff, -2px -2px 2px #fff, 2px -2px 2px #fff, -2px 2px 2px #fff,
+		2px 2px 2px #fff;
+}
+@keyframes spinning-gear {
+	0% {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(1turn);
+	}
+}
+#app {
+	position: relative;
 }
 :root {
 	--font-family: "Montserrat", sans-serif;
